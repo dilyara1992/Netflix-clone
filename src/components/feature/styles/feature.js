@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
@@ -9,7 +9,6 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-
     color: white;
     max-width: 640px;
     font-size: 50px;
@@ -19,7 +18,6 @@ export const Title = styled.h1`
     @media (max-width: 600px) {
         font-size: 35px;
     }
-
 `;
 
 export const SubTitle = styled.h2`
@@ -32,4 +30,3 @@ export const SubTitle = styled.h2`
         font-size: 18px;
     }
 `;
-

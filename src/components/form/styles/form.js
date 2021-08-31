@@ -1,8 +1,7 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { Link as ReachRouterLink } from 'react-router-dom';
 
-
-export const  Container = styled.div`
+export const Container = styled.section`
     display: flex;
     flex-direction: column;
     min-height: 660px;
@@ -16,11 +15,49 @@ export const  Container = styled.div`
     margin-bottom: 100px;
 `;
 
-export const  Base = styled.div`
+export const Error = styled.div`
+    background: #e87c03;
+    border-radius: 4px;
+    font-size: 14px;
+    margin: 0 0 16px;
+    color: white;
+    padding: 15px 20px;
+`;
+
+export const Base = styled.form`
     display: flex;
     flex-direction: column;
     max-width: 450px;
-    width: 100%;    
+    width: 100%;
+`;
+
+export const Title = styled.h1`
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 28px;
+`;
+
+export const Text = styled.h1`
+    color: #737373;
+    font-size: 16px;
+    font-weight: 500;
+`;
+
+export const TextSmall = styled.h2`
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: normal;
+    color: #8c8c8c;
+`;
+
+export const Link = styled(ReachRouterLink)`
+    color: #fff;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: underline;
+    }
 `;
 
 export const Input = styled.input`
@@ -32,12 +69,10 @@ export const Input = styled.input`
     line-height: 50px;
     padding: 5px 20px;
     margin-bottom: 20px;
-
+    
     &:last-of-type {
         margin-bottom: 30px;
     }
-
-
 `;
 
 export const Submit = styled.button`
@@ -45,58 +80,13 @@ export const Submit = styled.button`
     border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
-    margin: 0px 0 12px;
+    margin: 0 0 12px;
     padding: 16px;
     border: 0;
     color: white;
     cursor: pointer;
-
+    
     &:disabled {
         opacity: 0.5;
-    }
-
-`;
-
-export const Title = styled.h1`
-    color: #fff;
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 28px;
-
-`;
-
-
-export const Text = styled.p`
-    color: #737373;
-    font-size: 16px;
-    font-weight: 500;
-
-`;
-
-export const TextSmall = styled.h2`
-
-    margin-top: 10px;
-    font-size: 13px;
-    line-height: normal;
-    color: #8c8c8c;
-
-`;
-
-export const Error = styled.div`
-    background: #e87c03;
-    border-radius: 4px;
-    font-size: 14px;
-    margin: 0 0 16px;
-    color: white;
-    padding: 15px 20px;
-
-`;
-
-export const Link = styled(ReachRouterLink)`
-    color: #fff;
-    text-decoration: none;
-
-    &:hover {
-        text-decoration: underline;
     }
 `;

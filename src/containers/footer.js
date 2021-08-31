@@ -5,9 +5,9 @@ export function FooterContainer() {
     return (
         <Footer>
             <Footer.Title>Questions? Contact us.</Footer.Title>
-            <Footer.Break/>
+            <Footer.Break />
             <Footer.Row>
-            <Footer.Column>
+                <Footer.Column>
                     <Footer.Link href="#">FAQs</Footer.Link>
                     <Footer.Link href="#">Investor Relations</Footer.Link>
                     <Footer.Link href="#">Ways to Watch</Footer.Link>
@@ -24,8 +24,8 @@ export function FooterContainer() {
                 
                 <Footer.Column>
                     <Footer.Link href="#">Account</Footer.Link>
-                    <Footer.Link href="#">Redeem gift cards</Footer.Link>
-                    <Footer.Link href="#">Privacy</Footer.Link>
+                    <Footer.Link href="#">Reedem gift cards</Footer.Link>
+                    <Footer.Link href="#">Priacy</Footer.Link>
                     <Footer.Link href="#">Speed Test</Footer.Link>
                 </Footer.Column>
                 
@@ -36,8 +36,8 @@ export function FooterContainer() {
                     <Footer.Link href="#">Legal Notices</Footer.Link>
                 </Footer.Column>
             </Footer.Row>
-            <Footer.Break/>
-            <Footer.Text>Netflix Canada</Footer.Text>
+            <Footer.Break />
+            <Footer.Text>Netflix United Kingdom</Footer.Text>
         </Footer>
     )
 }

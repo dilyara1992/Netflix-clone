@@ -16,14 +16,13 @@ export const Inner = styled.div`
 
 export const Pane = styled.div`
     width: 50%;
-
+    
     @media (max-width: 1000px) {
         width: 100%;
         padding: 0 45px;
         text-align: center;
     }
 `;
-
 
 export const Item = styled.div`
     display: flex;
@@ -35,7 +34,7 @@ export const Item = styled.div`
 
 export const Container = styled.section`
     background-color: black;
-
+    
     @media (max-width: 1000px) {
         ${Item}:last-of-type h2 {
             margin-bottom: 50px;
