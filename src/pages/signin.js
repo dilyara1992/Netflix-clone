@@ -1,16 +1,15 @@
-import React, { useState} from 'react';
+import React, { useState, useContext} from 'react';
 import { useHistory } from 'react-router-dom';
-// import { FirebaseContext } from '../context/firebase';
+import { FirebaseContext } from '../context/firebase';
 import { Form } from '../components';
 import { HeaderContainer } from '../containers/header';
 import { FooterContainer } from '../containers/footer';
 import * as ROUTES from '../constants/routes';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-export default function Signin() {
+export default function Signin(props) {
+    const { firebase, seedDatabase } = useContext(FirebaseContext);
     const history = useHistory();
-    // const { firebase } = useContext(FirebaseContext);
-    
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -19,37 +18,17 @@ export default function Signin() {
     
     const handleSignin = (event) => {
         event.preventDefault();
-
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, emailAddress, password)
-        .then((userCredential) => {
-          // Signed in 
-            setEmailAddress('');
-            setPassword('');
-            setError('');
-            history.push(ROUTES.BROWSE);
-            const user = userCredential.user;
-            console.log(user)
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          console.log(errorCode)
-          const errorMessage = error.message;
-          console.log(errorMessage)
-        });
-
-
-
-        // firebase
-        //     .auth()
-        //     .signInWithEmailAndPassword(emailAddress, password)
-        //     .then(() => {
-        //         setEmailAddress('');
-        //         setPassword('');
-        //         setError('');
-        //         history.push(ROUTES.BROWSE);
-        //     })
-        //     .catch((error) => setError(error.message));
+        
+        firebase.auth()
+            .signInWithEmailAndPassword(emailAddress, password)
+            .then(() => {
+                history.push(ROUTES.BROWSE);
+            })
+            .catch((error) => {
+                setEmailAddress('');
+                setPassword('');
+                setError(error.message);
+            });
     }
     
     return (

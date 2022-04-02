@@ -1,6 +1,6 @@
-import React, { useState} from 'react';
+import React, { useState, useContext} from 'react';
 import { useHistory } from 'react-router-dom';
-// import { FirebaseContext } from '../context/firebase';
+import { FirebaseContext } from '../context/firebase';
 import { FooterContainer } from '../containers/footer';
 import { HeaderContainer } from '../containers/header';
 import { Form } from '../components';
@@ -9,65 +9,32 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Signup() {
     const history = useHistory();
-    // const { firebase } = useContext(FirebaseContext);
-    
     const [firstName, setFirstName] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const { firebase } = useContext(FirebaseContext);
     const auth = getAuth();
     
     const isInvalid = firstName === '' || password === '' || emailAddress === '';
     
     const handleSignup = (event) => {
         event.preventDefault();
-
-
-        createUserWithEmailAndPassword(auth, emailAddress, password)
-        .then((userCredential) => {
-            // Signed in 
-            console.log("Signing In")
-            const user = userCredential.user;
-
-            setEmailAddress('');
-            setPassword('');
-            setError('');
-            history.push(ROUTES.BROWSE);
-            console.log("Rerouting...")
-
-            user.updateProfile({
-                displayName: firstName,
-                photoURL: Math.floor(Math.random() * 5 ) + 1,
+        firebase.auth().createUserWithEmailAndPassword(emailAddress, password)
+            .then((r) => { 
+                r.user
+                    .updateProfile({
+                        displayName: firstName,
+                        photoURL: Math.floor(Math.random() * 5) + 1,
+                    }).then(() => { 
+                        history.push(ROUTES.BROWSE);
+                    })
+            }).catch((error) => { 
+                setFirstName('');
+                setEmailAddress('');
+                setPassword('');
+                setError(error.message);
             })
-
-            console.log("Signing In")
-            
-                    
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            console.log(errorCode)
-            const errorMessage = error.message;
-            console.log(errorMessage)
-            // ..
-        });
-        
-        // firebase
-        //     .auth()
-        //     .createUserWithEmailAndPassword(emailAddress, password)
-        //     .then((result) =>
-        //         result.user
-        //         .updateProfile({
-        //             displayName: firstName,
-        //             photoURL: Math.floor(Math.random() * 5 ) + 1,
-        //         })
-        //         .then(() => {
-        //             setEmailAddress('');
-        //             setPassword('');
-        //             setError('');
-        //             history.push(ROUTES.BROWSE);
-        //         })
-        //     ).catch((error) => setError(error.message));
     };
     
     return (
