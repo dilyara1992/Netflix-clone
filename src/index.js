@@ -6,7 +6,6 @@ import { firebase } from './lib/firebase.prod';
 import { FirebaseContext } from './context/firebase';
 
 
-
 ReactDOM.render(
   <FirebaseContext.Provider value={{firebase}}>
         <GlobalStyles />
