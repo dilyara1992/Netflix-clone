@@ -7,17 +7,17 @@ import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
 
 export function BrowseContainer({ slides }) {
-    // const [category, setCategory] = useState('series');
+    const [category, setCategory] = useState('series');
     const [profile, setProfile] = useState({});
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
-    // const [slideRows, setSlideRows] = useState([]);
+    const [slideRows, setSlideRows] = useState([]);
     
     const { firebase } = useContext(FirebaseContext);
     
     const user = {
-        displayName: "Karl",
-        photoURL: "1"
+        displayName: "Dilya",
+        photoURL: "2"
     };
     
     useEffect(() => {
@@ -26,20 +26,20 @@ export function BrowseContainer({ slides }) {
         }, 3000);
     }, [user])
     
-    // useEffect(() => {
-    //     setSlideRows(slides[category]);
-    // }, [slides, category]);
+    useEffect(() => {
+        setSlideRows(slides[category]);
+    }, [slides, category]);
     
-    // useEffect(() => {
-    //   const fuse = new Fuse(slideRows, { keys: ['data.description', 'data.title', 'data.genre'] });
-    //   const results = fuse.search(searchTerm).map(({ item }) => item);
+    useEffect(() => {
+      const fuse = new Fuse(slideRows, { keys: ['data.description', 'data.title', 'data.genre'] });
+      const results = fuse.search(searchTerm).map(({ item }) => item);
       
-    //   if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
-    //       setSlideRows(results);
-    //   } else {
-    //       setSlideRows(slides[category]);
-    //   }
-    // }, [searchTerm])
+      if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
+          setSlideRows(results);
+      } else {
+          setSlideRows(slides[category]);
+      }
+    }, [searchTerm])
     
     return profile.displayName ? (
         <>
@@ -49,16 +49,16 @@ export function BrowseContainer({ slides }) {
                 <Header.Frame>
                     <Header.Group>
                         <Header.Logo to={ROUTES.HOME} src="/images/misc/logo.svg" alt="Netflix" />
-                        {/* <Header.Link 
+                        <Header.Link 
                             active={category === 'series' ? 'true' : 'false'}
                             onClick={() => setCategory('series')}>
                             Series
-                        </Header.Link> */}
-                        {/* <Header.Link 
+                        </Header.Link> 
+                        <Header.Link 
                             active={category === 'films' ? 'true' : 'false'}
                             onClick={() => setCategory('films')}>
                             Films
-                        </Header.Link> */}
+                        </Header.Link> 
                     </Header.Group>
                     <Header.Group>
                         <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -90,7 +90,7 @@ export function BrowseContainer({ slides }) {
             </Header>
             
             <Card.Group>
-                {/* {slideRows.map((slideItem) => (
+                {slideRows.map((slideItem) => (
                     <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
                         <Card.Title>{slideItem.title}</Card.Title>
                         <Card.Entities>
@@ -107,13 +107,12 @@ export function BrowseContainer({ slides }) {
                         <Card.Feature category={category}>
                             <Player>
                                 <Player.Button />
-                                <Player.Video />
+                                <Player.Video src="/videos/bunny.mp4"/>
                             </Player>
                         </Card.Feature>
                     </Card>
-                ))} */}
+                ))}
             </Card.Group>
             <FooterContainer />
-        </>)
-        : (<SelectProfileContainer user={user} setProfile={setProfile} />);
+        </>) : (<SelectProfileContainer user={user} setProfile={setProfile} />);
 }
