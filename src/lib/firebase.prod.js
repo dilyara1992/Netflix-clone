@@ -1,8 +1,8 @@
 import Firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import { seedDatabase } from '../seed';
-
+import { dataDb } from '../data';
+require('dotenv').config()
 //process.env.REACT_API_KEY
 
 const API_KEY = process.env.REACT_APP_FIREBASE_API_KEY;
@@ -23,6 +23,6 @@ const config = {
 
 const firebase = Firebase.initializeApp(config);
 
-// seedDatabase(firebase);
+// dataDb(firebase);
 
 export { firebase };
