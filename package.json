@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-  
     "dotenv": "^16.0.0",
     "firebase": "^9.0.0",
     "fuse.js": "^6.4.6",
+    "node-forge": "^1.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.1",
@@ -38,22 +38,23 @@
       "last 1 safari version"
     ]
   },
-  "jest":{
+  "jest": {
     "collectCoverageFrom": [
-          "<rootDir>/src/**/*.js",
-          "!<rootDir>/src/app.js",
-          "!<rootDir>/src/helpers/routes.js",
-          "!<rootDir>/src/lib/firebase.js",
-          "!<rootDir>/src/lib/firebase.prod.js",
-          "!<rootDir>/src/index.js",
-          "!<rootDir>/src/seed.js",
-          "!<rootDir>/src/utils/index.js",
-          "!<rootDir>/src/pages/index.js",
-          "!<rootDir>/src/global-styles.js",
-          "!<rootDir>/src/components/index.js",
-          "!<rootDir>/src/firebase.prod.js",
-          "!<rootDir>/src/hooks/*.js",
-          "!<rootDir>/src/context/*.js"],
+      "<rootDir>/src/**/*.js",
+      "!<rootDir>/src/app.js",
+      "!<rootDir>/src/helpers/routes.js",
+      "!<rootDir>/src/lib/firebase.js",
+      "!<rootDir>/src/lib/firebase.prod.js",
+      "!<rootDir>/src/index.js",
+      "!<rootDir>/src/seed.js",
+      "!<rootDir>/src/utils/index.js",
+      "!<rootDir>/src/pages/index.js",
+      "!<rootDir>/src/global-styles.js",
+      "!<rootDir>/src/components/index.js",
+      "!<rootDir>/src/firebase.prod.js",
+      "!<rootDir>/src/hooks/*.js",
+      "!<rootDir>/src/context/*.js"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 90,
@@ -68,11 +69,11 @@
     ]
   },
   "devDependencies": {
-    "file-loader": "^6.2.0",
-    "url-loader": "^4.1.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3"
+    "@testing-library/user-event": "^12.8.3",
+    "file-loader": "^6.2.0",
+    "url-loader": "^4.1.1"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "webpack.config.js",
