@@ -14,11 +14,14 @@
     "styled-components": "^5.3.1",
     "web-vitals": "^1.1.2"
   },
+  "homepage": "https://dilyarakz.github.io/Netflix-clone",
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider  build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -73,6 +76,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "file-loader": "^6.2.0",
+    "gh-pages": "^6.2.0",
     "url-loader": "^4.1.1"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
